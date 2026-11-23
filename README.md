@@ -326,7 +326,7 @@ The additional Grad-CAM analysis is qualitative and does not establish quantitat
 
 The evaluation also relies on a validation dataset used during checkpoint selection rather than an independent test dataset.
 
-Future work could investigate Grad-CAM explanations across different convolutional layers, compare correct and incorrect predictions systematically, and evaluate model generalization on an independent test set.
+Future work could extend the current Layer3 and Layer4 comparison through quantitative localization evaluation using ground-truth defect annotations, additional convolutional layers, and independent test datasets.
 
 ### Original Repository and Acknowledgment
 
