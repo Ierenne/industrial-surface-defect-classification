@@ -381,6 +381,21 @@ Importantly, changing the Grad-CAM target layer did not change the predicted cla
 
 Overall, Layer3 provided more spatially detailed activation patterns, while Layer4 produced smoother and broader responses. However, higher spatial resolution does not necessarily indicate better explanation quality or more accurate defect localization. Without ground-truth localization evaluation, neither layer can be considered definitively superior.
 
+#### Summary of Class-Specific Observations
+
+| Defect Class | Layer3 Grad-CAM | Layer4 Grad-CAM | Selected Predictions |
+|---|---|---|---|
+| Crazing | Fragmented activations across the surface | Smoother, more concentrated regions | 2 correct |
+| Inclusion | Several localized responses, including edge regions | Broader responses, partly near image boundaries | 2 incorrect |
+| Patches | Smaller activations around visible dark defects | Broader activation covering major defect regions | 2 correct |
+| Pitted Surface | Multiple localized responses near surface irregularities | Smoother and more extensive activation regions | 2 correct |
+| Rolled-in Scale | Scattered and fragmented responses | Broader and less fragmented activations | 2 correct |
+| Scratches | Activations partly following horizontal scratch patterns | Broader responses not always aligned with scratches | 2 correct |
+
+**Note:** These observations are based on 12 selected validation
+images and represent qualitative comparisons rather than
+quantitative defect localization performance.
+
 ### Reproducing the Experiment
 
 After preparing the dataset, installing the required Python packages, and restoring the trained ResNet18 checkpoint, run:
