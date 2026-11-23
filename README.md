@@ -338,6 +338,72 @@ https://github.com/amirhossein-sadeghi2003/industrial-surface-defect-classificat
 
 The original implementation, model training procedures, and supporting code are acknowledged. The extended Grad-CAM visualization is documented as an additional student experiment.
 
+## Additional Experiment: Grad-CAM Comparison Between ResNet18 Layer3 and Layer4
+
+### Objective
+
+This experiment investigates how different convolutional layers influence Grad-CAM explanations in ResNet18-based steel surface defect classification.
+
+The purpose is to compare the spatial activation patterns produced by two different feature extraction stages of the same trained model.
+
+### Experimental Setup
+
+The experiment uses the previously trained ResNet18 checkpoint and the NEU-DET validation dataset.
+
+Two images are selected from each of the six defect classes, resulting in 12 validation images.
+
+Grad-CAM is generated using two target layers:
+
+- Layer3: `model.layer3[-1]`
+- Layer4: `model.layer4[-1]`
+
+The model checkpoint, input images, preprocessing, predicted classes, and model parameters remain unchanged.
+
+Only the target convolutional layer used for Grad-CAM visualization is modified.
+
+### Visualization Results
+
+![Grad-CAM Layer3 vs Layer4](results/gradcam_layer3_vs_layer4.png)
+
+The visualization compares the original images, Grad-CAM heatmaps, and overlay images generated from Layer3 and Layer4.
+
+### Analysis and Interpretation
+
+[After examining the generated figure, describe whether Layer3 and Layer4 highlight similar or different image regions.]
+
+[Discuss examples where activation patterns appear to correspond to visible steel surface defects.]
+
+[Discuss whether incorrectly classified images show attention patterns that differ between the two layers.]
+
+The two layers have different spatial feature-map resolutions. Layer3 provides 14 × 14 feature maps, while Layer4 provides 7 × 7 feature maps for the standard 224 × 224 input.
+
+Therefore, the resulting Grad-CAM explanations may differ in spatial detail and activation distribution.
+
+### Reproducing the Experiment
+
+After preparing the dataset, installing the required Python packages, and restoring the trained ResNet18 checkpoint, run:
+
+`python src/compare_gradcam_layers.py`
+
+The experiment generates:
+
+- `results/gradcam_layer3_vs_layer4.png`
+- `results/gradcam_layer_comparison.csv`
+
+### Limitations
+
+The comparison is based on a small qualitative subset of validation images.
+
+Grad-CAM visualizations are not ground-truth defect segmentation masks. Therefore, the experiment does not establish which target layer provides more accurate defect localization.
+
+The normalized high-activation fractions are descriptive indicators rather than quantitative measures of explanation quality.
+
+### Contribution
+
+This experiment extends the original repository by introducing a controlled comparison of Grad-CAM explanations at two different ResNet18 convolutional layers.
+
+It provides additional qualitative evidence about how feature extraction depth influences the visual interpretation of steel surface defect predictions.
+
 ## License
 
 The repository code is available under the MIT License. The NEU-DET dataset is
