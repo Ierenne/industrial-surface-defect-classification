@@ -14,7 +14,7 @@ RESULTS_DIR = Path("results")
 OUTPUT_PATH = RESULTS_DIR / "gradcam_resnet18_examples.png"
 
 IMAGE_SIZE = 224
-EXAMPLES_PER_CLASS = 1
+EXAMPLES_PER_CLASS = 2
 
 
 def get_device():
